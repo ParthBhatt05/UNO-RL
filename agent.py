@@ -53,7 +53,7 @@ class UnoAgent:
 
             history = self.model_final.fit(x=states, y=q_values, 512, verbose=0)
             self.logger.scalar('loss', history.history['loss'][0])
-            self.logger.scalar('accuracy', history.history['acc'][0])
+            self.logger.scalar('accuracy', history.history['accuracy'][0])
             self.logger.flush()
             
             i += 1
