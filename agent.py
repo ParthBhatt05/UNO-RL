@@ -16,7 +16,7 @@ class UnoAgent:
         self.model_final.set_weights(self.model.get_weights())
         self.replay_memory = collections.deque(maxlen=10000)
 
-    def build_model(self, _input):
+    def build_model(self, _input, _output):
         model = models.Sequential()
         model.add(layers.Dense(units=128, activation='relu', input_shape=(_input,)))
         model.add(layers.Dense(units=128, activation='relu'))
@@ -24,7 +24,7 @@ class UnoAgent:
         model.add(layers.Dense(units=128, activation='relu'))
         model.add(layers.Dense(units=128, activation='relu'))
         model.add(layers.Dense(units=128, activation='relu'))
-        model.add(layers.Dense(units=output_size, activation='linear'))
+        model.add(layers.Dense(units=_output, activation='linear'))
         model.compile(loss='mae', optimizer='rmsprop', metrics=['accuracy'])
         return model
 
